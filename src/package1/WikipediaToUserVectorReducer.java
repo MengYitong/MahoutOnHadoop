@@ -15,8 +15,9 @@ public class WikipediaToUserVectorReducer extends Reducer <VarLongWritable,VarLo
 		for (VarLongWritable itemPref:itemPrefs)
 		{
 			userVector.set((int)itemPref.get(),1.0f);
-			context.write(userID ,new VectorWritable(userVector));
 		}
+		context.write(userID ,new VectorWritable(userVector));
+		
 	}
 
 }
