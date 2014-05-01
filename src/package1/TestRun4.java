@@ -33,8 +33,8 @@ public class TestRun4 {
 	        job.setInputFormatClass(SequenceFileInputFormat.class);
 	        job.setOutputFormatClass(SequenceFileOutputFormat.class);
 	        SequenceFileOutputFormat.setOutputCompressionType(job, CompressionType.NONE);
-	        FileInputFormat.addInputPath(job, new Path("hdfs://192.168.159.131:9000/output1/"));
-	        FileOutputFormat.setOutputPath(job, new Path("hdfs://192.168.159.131:9000/output4/"));
+	        FileInputFormat.addInputPath(job, new Path("hdfs://192.168.159.131:9000/output/output1/"));
+	        FileOutputFormat.setOutputPath(job, new Path("hdfs://192.168.159.131:9000/output/output4/"));
 	        int b=job.waitForCompletion(true) ? 0 : 1;
 	        return b;
 	    }
