@@ -11,7 +11,7 @@ public class Run {
 		{
 			if(TestRun2.run(args)==0)
 			{
-				TestRun3.run(args);
+				TestRun4.run(args);
 			}
 		}
 	}
