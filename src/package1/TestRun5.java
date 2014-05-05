@@ -10,6 +10,7 @@ import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
+import org.apache.mahout.cf.taste.hadoop.item.VectorAndPrefsWritable;
 import org.apache.mahout.cf.taste.hadoop.item.VectorOrPrefWritable;
 import org.apache.mahout.math.VarIntWritable;
 
@@ -24,16 +25,16 @@ public class TestRun5 {
 	        }
 
 	        Job job = new Job(conf, "TestRun5");
-	        job.setJarByClass(TestRun4.class);
+	        job.setJarByClass(TestRun5.class);
 	        job.setMapperClass(ToVectorAndPrefMapper.class);
 	        job.setReducerClass(ToVectorAndPrefReducer.class);
 	        job.setMapOutputKeyClass(VarIntWritable.class);
 	        job.setMapOutputValueClass(VectorOrPrefWritable.class);
 	        job.setOutputKeyClass(VarIntWritable.class);
-	        job.setOutputValueClass(VectorOrPrefWritable.class);
+	        job.setOutputValueClass(VectorAndPrefsWritable.class);
 	        job.setInputFormatClass(SequenceFileInputFormat.class);
-	        //job.setOutputFormatClass(SequenceFileOutputFormat.class);
-	        //SequenceFileOutputFormat.setOutputCompressionType(job, CompressionType.NONE);
+	        job.setOutputFormatClass(SequenceFileOutputFormat.class);
+	        SequenceFileOutputFormat.setOutputCompressionType(job, CompressionType.NONE);
 	        FileInputFormat.addInputPath(job, new Path("hdfs://192.168.159.131:9000/output/output3/"));
 	        FileInputFormat.addInputPath(job, new Path("hdfs://192.168.159.131:9000/output/output4/"));
 	        FileOutputFormat.setOutputPath(job, new Path("hdfs://192.168.159.131:9000/output/output5/"));

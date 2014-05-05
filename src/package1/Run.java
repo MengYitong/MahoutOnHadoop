@@ -13,7 +13,8 @@ public class Run {
 			{
 				if(TestRun4.run(args)==0&&TestRun3.run(args)==0)
 				{
-					TestRun5.run(args);
+					if(TestRun5.run(args)==0)
+						TestRun6.run(args);
 				}
 			}
 		}
